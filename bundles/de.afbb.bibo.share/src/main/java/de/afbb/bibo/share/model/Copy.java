@@ -7,7 +7,7 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IPersistableElement;
 
 /**
- * one copy of a medium
+ * one copy of a {@link Medium}
  */
 public class Copy extends Medium implements IEditorInput, Cloneable {
 
@@ -114,7 +114,12 @@ public class Copy extends Medium implements IEditorInput, Cloneable {
 
 	@Override
 	public Object clone() {
-		return super.clone();
+		Object c = super.clone();
+		((Copy) c).setBorrower((Borrower) getBorrower().clone());
+		((Copy) c).setLastBorrower((Borrower) getLastBorrower().clone());
+		((Copy) c).setCurator((Curator) getCurator().clone());
+		((Copy) c).setLastCurator((Curator) getLastCurator().clone());
+		return c;
 	}
 
 	public Curator getCurator() {
