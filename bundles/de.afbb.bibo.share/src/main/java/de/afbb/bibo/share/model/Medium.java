@@ -178,7 +178,9 @@ public class Medium extends AbstractPropertyChangeSupport implements Cloneable {
 	@Override
 	public Object clone() {
 		try {
-			return super.clone();
+			Object c = super.clone();
+			((Medium) c).setType((MediumType) getType().clone());
+			return c;
 		} catch (final CloneNotSupportedException e) {
 			// swallow exception and return null
 			return null;
